@@ -1,0 +1,63 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: dafuweng-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${NACOS_HOST:localhost}:${NACOS_PORT:8848}
+        namespace: ${NACOS_NAMESPACE:public}
+        group: ${NACOS_GROUP:DEFAULT_GROUP}
+    gateway:
+      discovery:
+        locator:
+          enabled: false  # 关闭服务自动发现，手动配置路由
+      routes:
+        # 认证服务
+        - id: auth-service
+          uri: lb://dafuweng-auth
+          predicates:
+            - Path=/auth/**
+          filters:
+            - StripPrefix=1
+        # 销售服务
+        - id: sales-service
+          uri: lb://dafuweng-sales
+          predicates:
+            - Path=/customer/**,/contact-record/**,/contract/**,/work-log/**,/performance/**
+          filters:
+            - StripPrefix=1
+        # 金融服务
+        - id: finance-service
+          uri: lb://dafuweng-finance
+          predicates:
+            - Path=/loan-audit/**,/product/**,/service-fee/**,/commission/**,/bank/**
+          filters:
+            - StripPrefix=1
+        # 系统管理
+        - id: system-service
+          uri: lb://dafuweng-system
+          predicates:
+            - Path=/department/**,/account/**,/operation-log/**,/system-param/**,/zone/**,/dict/**
+          filters:
+            - StripPrefix=1
+
+  redis:
+    host: ${REDIS_HOST:localhost}
+    port: ${REDIS_PORT:6379}
+    password: ${REDIS_PWD:}
+    database: ${REDIS_DB:0}
+
+# JWT 配置（生产从环境变量注入）
+jwt:
+  secret: ${JWT_SECRET:your-256-bit-secret-key-here-change-in-production}
+  expiration: 86400000   # 24小时
+  refresh-expiration: 604800000  # 7天
+
+# 日志配置
+logging:
+  level:
+    com.dafuweng: DEBUG
+    org.springframework.cloud.gateway: DEBUG
