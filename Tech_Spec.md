@@ -39,10 +39,10 @@
 ## 2. 项目模块详细结构
 
 ```
-dafuquan/
+dafuweng/
 ├── pom.xml                          # 父POM（版本管理）
 │
-├── dafuquan-gateway/                # 网关服务 (端口: 8080)
+├── dafuweng-gateway/                # 网关服务 (端口: 8080)
 │   ├── src/main/java/.../gateway/
 │   │   ├── GatewayApplication.java
 │   │   ├── config/
@@ -53,7 +53,7 @@ dafuquan/
 │   └── src/main/resources/
 │       └── application.yml
 │
-├── dafuquan-auth/                   # 认证服务 (端口: 8081)
+├── dafuweng-auth/                   # 认证服务 (端口: 8081)
 │   ├── src/main/java/.../auth/
 │   │   ├── AuthApplication.java
 │   │   ├── controller/
@@ -85,7 +85,7 @@ dafuquan/
 │       ├── mapper/auth/*.xml
 │       └── application.yml
 │
-├── dafuquan-sales/                  # 销售服务 (端口: 8082)
+├── dafuweng-sales/                  # 销售服务 (端口: 8082)
 │   ├── src/main/java/.../sales/
 │   │   ├── SalesApplication.java
 │   │   ├── controller/
@@ -128,7 +128,7 @@ dafuquan/
 │       ├── mapper/sales/*.xml
 │       └── application.yml
 │
-├── dafuquan-finance/                # 金融服务 (端口: 8083)
+├── dafuweng-finance/                # 金融服务 (端口: 8083)
 │   ├── src/main/java/.../finance/
 │   │   ├── FinanceApplication.java
 │   │   ├── controller/
@@ -150,7 +150,7 @@ dafuquan/
 │   │       └── BankAuditStatus.java  # 银行审核状态
 │   └── src/main/resources/
 │
-├── dafuquan-system/                 # 系统管理 (端口: 8084)
+├── dafuweng-system/                 # 系统管理 (端口: 8084)
 │   ├── src/main/java/.../system/
 │   │   ├── SystemApplication.java
 │   │   ├── controller/
@@ -167,7 +167,7 @@ dafuquan/
 │   │       └── SysParam.java
 │   └── src/main/resources/
 │
-├── dafuquan-notify/                 # 消息通知 (端口: 8085)
+├── dafuweng-notify/                 # 消息通知 (端口: 8085)
 │   ├── src/main/java/.../notify/
 │   │   ├── NotifyApplication.java
 │   │   ├── mq/
@@ -187,7 +187,7 @@ dafuquan/
 │   │       └── RabbitMQConfig.java
 │   └── src/main/resources/
 │
-└── dafuquan-common/                 # 公共模块（不打包为服务）
+└── dafuweng-common/                 # 公共模块（不打包为服务）
     ├── pom.xml
     │
     ├── common-core/                  # 核心实体/枚举/异常
@@ -249,16 +249,16 @@ dafuquan/
 
 | 服务 | 数据库名 | 字符集 |
 |------|---------|--------|
-| auth-service | dafuquan_auth | utf8mb4 |
-| sales-service | dafuquan_sales | utf8mb4 |
-| finance-service | dafuquan_finance | utf8mb4 |
-| system-service | dafuquan_system | utf8mb4 |
+| auth-service | dafuweng_auth | utf8mb4 |
+| sales-service | dafuweng_sales | utf8mb4 |
+| finance-service | dafuweng_finance | utf8mb4 |
+| system-service | dafuweng_system | utf8mb4 |
 
 ### 3.2 核心表结构（MySQL DDL）
 
 ```sql
 -- =============================================
--- dafuquan_sales 库
+-- dafuweng_sales 库
 -- =============================================
 
 -- 客户表
@@ -391,7 +391,7 @@ CREATE TABLE `performance_record` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='业绩记录表';
 
 -- =============================================
--- dafuquan_finance 库
+-- dafuweng_finance 库
 -- =============================================
 
 -- 金融产品表
@@ -468,7 +468,7 @@ CREATE TABLE `service_fee_record` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='服务费记录表';
 
 -- =============================================
--- dafuquan_auth 库
+-- dafuweng_auth 库
 -- =============================================
 
 -- 用户表
@@ -518,7 +518,7 @@ CREATE TABLE `sys_user_role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户角色关联表';
 
 -- =============================================
--- dafuquan_system 库
+-- dafuweng_system 库
 -- =============================================
 
 -- 部门表
@@ -705,10 +705,10 @@ CREATE TABLE `sys_param` (
 # Nacos 共享配置
 spring:
   application:
-    name: dafuquan-sales
+    name: dafuweng-sales
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:dafuquan_sales}?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&allowMultiQueries=true
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:dafuweng_sales}?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&allowMultiQueries=true
     username: ${DB_USER:root}
     password: ${DB_PWD:root123}
   redis:
@@ -719,7 +719,7 @@ spring:
 
 mybatis-plus:
   mapper-locations: classpath*:/mapper/**/*.xml
-  type-aliases-package: com.dafuquan.**.entity
+  type-aliases-package: com.dafuweng.**.entity
   configuration:
     map-underscore-to-camel-case: true
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
@@ -878,7 +878,7 @@ http {
     gzip_types text/plain application/json application/xml text/css application/javascript;
 
     # 上游服务（Gateway）
-    upstream dafuquan_gateway {
+    upstream dafuweng_gateway {
         least_conn;
         server 127.0.0.1:8080 weight=1;
         # 多实例部署时：
@@ -900,7 +900,7 @@ http {
 
         # API 转发到 Gateway
         location /api/ {
-            proxy_pass http://dafuquan_gateway;
+            proxy_pass http://dafuweng_gateway;
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -927,7 +927,7 @@ http {
 ## 9. Spring Gateway 路由配置
 
 ```yaml
-# dafuquan-gateway/src/main/resources/application.yml
+# dafuweng-gateway/src/main/resources/application.yml
 spring:
   cloud:
     gateway:
@@ -937,7 +937,7 @@ spring:
       routes:
         # 认证服务
         - id: auth-service
-          uri: lb://dafuquan-auth
+          uri: lb://dafuweng-auth
           predicates:
             - Path=/auth/**
           filters:
@@ -949,7 +949,7 @@ spring:
 
         # 销售服务
         - id: sales-service
-          uri: lb://dafuquan-sales
+          uri: lb://dafuweng-sales
           predicates:
             - Path=/customer/**,/contact-record/**,/contract/**,/work-log/**,/performance/**
           filters:
@@ -957,7 +957,7 @@ spring:
 
         # 金融服务
         - id: finance-service
-          uri: lb://dafuquan-finance
+          uri: lb://dafuweng-finance
           predicates:
             - Path=/loan-audit/**,/product/**,/service-fee/**
           filters:
@@ -965,7 +965,7 @@ spring:
 
         # 系统管理
         - id: system-service
-          uri: lb://dafuquan-system
+          uri: lb://dafuweng-system
           predicates:
             - Path=/department/**,/account/**,/operation-log/**,/system-param/**
           filters:
@@ -973,7 +973,7 @@ spring:
 
         # 消息通知（内部服务，不对外暴露）
         # - id: notify-service
-        #   uri: lb://dafuquan-notify
+        #   uri: lb://dafuweng-notify
         #   predicates:
         #     - Path=/notify/**
         #   filters:
@@ -987,9 +987,9 @@ spring:
 ### 10.1 Feign Client定义
 
 ```java
-// 在 dafuquan-common/common-feign 中定义
+// 在 dafuweng-common/common-feign 中定义
 
-@FeignClient(name = "dafuquan-auth", fallback = AuthServiceFallback.class)
+@FeignClient(name = "dafuweng-auth", fallback = AuthServiceFallback.class)
 public interface AuthFeignClient {
 
     @GetMapping("/auth/userinfo")
@@ -1000,7 +1000,7 @@ public interface AuthFeignClient {
 }
 
 // 销售服务调用金融服务的Feign
-@FeignClient(name = "dafuquan-finance")
+@FeignClient(name = "dafuweng-finance")
 public interface FinanceFeignClient {
 
     @PostMapping("/loan-audit/receive")
@@ -1087,14 +1087,51 @@ public class DataScopeInterceptor implements InnerInterceptor {
 
 ### 12.1 统一响应R.java
 
+位置：`dafuweng-common/common-core/.../result/R.java`
+
 ```java
-@Getter
-@Setter
+package com.dafuweng.common.core.result;
+
+import cn.hutool.core.util.StrUtil;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.Data;
+
+import java.io.Serial;
+import java.io.Serializable;
+
+/**
+ * 全局统一返回结构
+ *
+ * 阿里巴巴《Java开发手册》强制规范：
+ * 1. 【强制】正例返回必须使用本类的 ok()/error() 静态方法，禁止直接 new
+ * 2. 【强制】message 字段禁止返回前端敏感信息（异常堆栈/ SQL报错/内部路径）
+ * 3. 【强制】data 字段为 null 时必须序列化为 null，不能序列化为空字符串""
+ */
+@Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class R<T> implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 1L;
+
+    /** 业务状态码 */
     private int code;
+
+    /** 描述信息（可前端展示） */
     private String message;
+
+    /** 响应数据 */
     private T data;
+
+    /** 时间戳（毫秒） */
     private long timestamp;
+
+    /** traceId（链路追踪） */
+    private String traceId;
+
+    // ================================================================
+    // 静态工厂方法（强制使用，禁止直接 new R<>）
+    // ================================================================
 
     private static final int SUCCESS_CODE = 200;
     private static final int ERROR_CODE = 500;
@@ -1104,24 +1141,161 @@ public class R<T> implements Serializable {
     }
 
     public static <T> R<T> ok(T data) {
+        return build(SUCCESS_CODE, "success", data);
+    }
+
+    public static <T> R<T> ok(T data, String message) {
+        return build(SUCCESS_CODE, message, data);
+    }
+
+    public static <T> R<T> error(int code, String message) {
+        return build(code, message, null);
+    }
+
+    public static <T> R<T> error(ErrorCode errorCode) {
+        return build(errorCode.getCode(), errorCode.getMessage(), null);
+    }
+
+    public static <T> R<T> error(int code, String message, T data) {
+        return build(code, message, data);
+    }
+
+    public static <T> R<T> build(int code, String message, T data) {
         R<T> r = new R<>();
-        r.setCode(SUCCESS_CODE);
-        r.setMessage("success");
+        r.setCode(code);
+        r.setMessage(message);
         r.setData(data);
         r.setTimestamp(System.currentTimeMillis());
         return r;
     }
 
-    public static <T> R<T> error(int code, String message) {
-        R<T> r = new R<>();
-        r.setCode(code);
-        r.setMessage(message);
-        r.setTimestamp(System.currentTimeMillis());
-        return r;
+    // ================================================================
+    // 快捷判断方法
+    // ================================================================
+
+    public boolean isSuccess() {
+        return this.code == SUCCESS_CODE;
     }
 
-    public static <T> R<T> error(BusinessException e) {
-        return error(e.getCode(), e.getMessage());
+    public boolean isError() {
+        return this.code != SUCCESS_CODE;
+    }
+
+    // ================================================================
+    // Builder 模式（可选，用于链式构造复杂响应）
+    // ================================================================
+
+    public static <T> RBuilder<T> builder() {
+        return new RBuilder<>();
+    }
+
+    public static class RBuilder<T> {
+        private int code = SUCCESS_CODE;
+        private String message = "success";
+        private T data;
+        private String traceId;
+
+        public RBuilder<T> code(int code) {
+            this.code = code;
+            return this;
+        }
+
+        public RBuilder<T> message(String message) {
+            this.message = message;
+            return this;
+        }
+
+        public RBuilder<T> data(T data) {
+            this.data = data;
+            return this;
+        }
+
+        public RBuilder<T> traceId(String traceId) {
+            this.traceId = traceId;
+            return this;
+        }
+
+        public R<T> build() {
+            R<T> r = new R<>();
+            r.setCode(this.code);
+            r.setMessage(this.message);
+            r.setData(this.data);
+            r.setTraceId(this.traceId);
+            r.setTimestamp(System.currentTimeMillis());
+            return r;
+        }
+    }
+}
+```
+
+#### PageResult 分页响应
+
+```java
+package com.dafuweng.common.core.result;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.Data;
+
+import java.io.Serial;
+import java.io.Serializable;
+import java.util.List;
+
+/**
+ * 分页统一响应结构
+ *
+ * 【强制】分页响应必须使用本类，不允许返回裸 List 并自行拼接分页字段
+ */
+@Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class PageResult<T> implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 1L;
+
+    /** 当前页数据列表 */
+    private List<T> records;
+
+    /** 总记录数 */
+    private long total;
+
+    /** 每页条数 */
+    private long size;
+
+    /** 当前页码 */
+    private long current;
+
+    /** 总页数 */
+    private long pages;
+
+    /** 是否有下一页 */
+    private boolean hasNext;
+
+    /** 是否有上一页 */
+    private boolean hasPrevious;
+
+    public PageResult() {}
+
+    public PageResult(List<T> records, long total, long size, long current) {
+        this.records = records;
+        this.total = total;
+        this.size = size;
+        this.current = current;
+        this.pages = size > 0 ? (total + size - 1) / size : 0;
+        this.hasNext = current < pages;
+        this.hasPrevious = current > 1;
+    }
+
+    public static <T> PageResult<T> of(com.baomidou.mybatisplus.core.metadata.IPage<T> page) {
+        return new PageResult<>(
+            page.getRecords(),
+            page.getTotal(),
+            page.getSize(),
+            page.getCurrent()
+        );
+    }
+
+    public static <T> PageResult<T> empty(long size) {
+        return new PageResult<>(List.of(), 0, size, 1);
     }
 }
 ```
@@ -1219,13 +1393,13 @@ public class JwtUtil {
 ```bash
 # scripts/init.sql
 # 创建4个数据库
-CREATE DATABASE IF NOT EXISTS dafuquan_auth DEFAULT CHARSET utf8mb4;
-CREATE DATABASE IF NOT EXISTS dafuquan_sales DEFAULT CHARSET utf8mb4;
-CREATE DATABASE IF NOT EXISTS dafuquan_finance DEFAULT CHARSET utf8mb4;
-CREATE DATABASE IF NOT EXISTS dafuquan_system DEFAULT CHARSET utf8mb4;
+CREATE DATABASE IF NOT EXISTS dafuweng_auth DEFAULT CHARSET utf8mb4;
+CREATE DATABASE IF NOT EXISTS dafuweng_sales DEFAULT CHARSET utf8mb4;
+CREATE DATABASE IF NOT EXISTS dafuweng_finance DEFAULT CHARSET utf8mb4;
+CREATE DATABASE IF NOT EXISTS dafuweng_system DEFAULT CHARSET utf8mb4;
 
 # 初始化公共数据
-USE dafuquan_auth;
+USE dafuweng_auth;
 INSERT INTO sys_role (role_code, role_name, data_scope) VALUES
 ('admin', '系统管理员', 4),
 ('general_manager', '总经理', 4),
@@ -1245,14 +1419,14 @@ INSERT INTO sys_role (role_code, role_name, data_scope) VALUES
 
 set -e
 
-SERVICES=("dafuquan-gateway" "dafuquan-auth" "dafuquan-sales"
-          "dafuquan-finance" "dafuquan-system" "dafuquan-notify")
+SERVICES=("dafuweng-gateway" "dafuweng-auth" "dafuweng-sales"
+          "dafuweng-finance" "dafuweng-system" "dafuweng-notify")
 
 for svc in "${SERVICES[@]}"; do
     echo "Building $svc..."
     cd $svc
     mvn clean package -DskipTests spring-boot:repackage
-    docker build -t dafuquan/$svc:latest .
+    docker build -t dafuweng/$svc:latest .
     cd ..
 done
 
@@ -1287,20 +1461,20 @@ echo "All services built successfully"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 ...">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.dafuquan</groupId>
-    <artifactId>dafuquan-parent</artifactId>
+    <groupId>com.dafuweng</groupId>
+    <artifactId>dafuweng-parent</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
-    <name>dafuquan-parent</name>
+    <name>dafuweng-parent</name>
 
     <modules>
-        <module>dafuquan-common</module>
-        <module>dafuquan-gateway</module>
-        <module>dafuquan-auth</module>
-        <module>dafuquan-sales</module>
-        <module>dafuquan-finance</module>
-        <module>dafuquan-system</module>
-        <module>dafuquan-notify</module>
+        <module>dafuweng-common</module>
+        <module>dafuweng-gateway</module>
+        <module>dafuweng-auth</module>
+        <module>dafuweng-sales</module>
+        <module>dafuweng-finance</module>
+        <module>dafuweng-system</module>
+        <module>dafuweng-notify</module>
     </modules>
 
     <properties>

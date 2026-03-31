@@ -333,7 +333,7 @@ services:
     image: mysql:8.0
     environment:
       MYSQL_ROOT_PASSWORD: root123
-      MYSQL_DATABASE: dafuquan
+      MYSQL_DATABASE: dafuweng
     ports:
       - "3306:3306"
     volumes:
@@ -378,14 +378,14 @@ volumes:
 ## 7. 项目结构
 
 ```
-dafuquan
-├── dafuquan-gateway/          # 网关服务
-├── dafuquan-auth/             # 认证服务
-├── dafuquan-sales/            # 销售服务
-├── dafuquan-finance/          # 金融服区
-├── dafuquan-system/           # 系统管理
-├── dafuquan-notify/            # 消息通知
-├── dafuquan-common/           # 公共模块
+dafuweng
+├── dafuweng-gateway/          # 网关服务
+├── dafuweng-auth/             # 认证服务
+├── dafuweng-sales/            # 销售服务
+├── dafuweng-finance/          # 金融服区
+├── dafuweng-system/           # 系统管理
+├── dafuweng-notify/            # 消息通知
+├── dafuweng-common/           # 公共模块
 │   ├── common-core/            # 实体/枚举/异常
 │   ├── common-mybatis/         # MyBatisPlus配置/拦截器
 │   ├── common-redis/           # Redis配置
@@ -402,7 +402,7 @@ dafuquan
 ### Phase 1: 基础设施（1周）
 - [ ] 搭建本地 Docker 环境（MySQL/Redis/Nacos/RabbitMQ/Nginx）
 - [ ] 初始化 Nacos 配置中心（各服务配置文件）
-- [ ] 创建公共模块 dafuquan-common（实体基类/统一响应/异常处理）
+- [ ] 创建公共模块 dafuweng-common（实体基类/统一响应/异常处理）
 - [ ] 搭建网关服务（路由规则/鉴权拦截器）
 
 ### Phase 2: 认证授权（1周）
