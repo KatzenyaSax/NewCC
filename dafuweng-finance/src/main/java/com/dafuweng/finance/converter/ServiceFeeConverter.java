@@ -19,5 +19,7 @@ public interface ServiceFeeConverter extends EntityConverter<ServiceFeeRecord, S
     @Mapping(target = "deleted", ignore = true)
     ServiceFeeRecord toEntity(ServiceFeeRecordCreateRequest request);
 
+    ServiceFeeRecordVO toVO(ServiceFeeRecord entity);
+
     List<ServiceFeeRecordVO> toVOList(List<ServiceFeeRecord> entities);
 }

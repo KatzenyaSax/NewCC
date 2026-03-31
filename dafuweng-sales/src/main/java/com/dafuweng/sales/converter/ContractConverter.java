@@ -43,7 +43,11 @@ public interface ContractConverter extends EntityConverter<Contract, ContractVO>
         return contractStatus != null ? contractStatus.getDesc() : null;
     }
 
+    ContractVO toVO(Contract entity);
+
     ContractAttachmentVO toAttachmentVO(ContractAttachment entity);
+
+    List<ContractVO> toVOList(List<Contract> entities);
 
     List<ContractAttachmentVO> toAttachmentVOList(List<ContractAttachment> entities);
 }

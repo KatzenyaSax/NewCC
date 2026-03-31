@@ -77,7 +77,12 @@ public class ServiceFeeServiceImpl implements ServiceFeeService {
 
         wrapper.orderByDesc(ServiceFeeRecord::getCreatedAt);
         IPage<ServiceFeeRecord> result = serviceFeeRecordMapper.selectPage(page, wrapper);
-        return PageResult.of(result, serviceFeeConverter.toVOList(result.getRecords()));
+        return new PageResult<>(
+            serviceFeeConverter.toVOList(result.getRecords()),
+            result.getTotal(),
+            result.getSize(),
+            result.getCurrent()
+        );
     }
 
     @Override

@@ -118,7 +118,12 @@ public class FinanceProductServiceImpl implements FinanceProductService {
 
         wrapper.orderByDesc(FinanceProduct::getCreatedAt);
         IPage<FinanceProduct> result = financeProductMapper.selectPage(page, wrapper);
-        return PageResult.of(result, financeProductConverter.toVOList(result.getRecords()));
+        return new PageResult<>(
+            financeProductConverter.toVOList(result.getRecords()),
+            result.getTotal(),
+            result.getSize(),
+            result.getCurrent()
+        );
     }
 
     @Override

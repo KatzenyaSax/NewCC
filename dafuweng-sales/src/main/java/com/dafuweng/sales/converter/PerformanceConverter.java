@@ -12,4 +12,8 @@ import org.mapstruct.ReportingPolicy;
         nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
         unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface PerformanceConverter extends EntityConverter<PerformanceRecord, PerformanceVO> {
+
+    PerformanceVO toVO(PerformanceRecord entity);
+
+    List<PerformanceVO> toVOList(List<PerformanceRecord> entities);
 }

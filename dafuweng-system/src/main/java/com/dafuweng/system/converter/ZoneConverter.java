@@ -30,5 +30,7 @@ public interface ZoneConverter extends EntityConverter<SysZone, ZoneVO> {
 
     ZoneVO toVO(SysZone entity);
 
+    void copy(ZoneUpdateRequest request, @MappingTarget SysZone entity);
+
     List<ZoneVO> toVOList(List<SysZone> entities);
 }

@@ -86,6 +86,11 @@ public class PerformanceServiceImpl implements PerformanceService {
         wrapper.orderByDesc(PerformanceRecord::getCreatedAt);
 
         IPage<PerformanceRecord> pageResult = performanceRecordMapper.selectPage(page, wrapper);
-        return PageResult.of(pageResult);
+        return new PageResult<>(
+            performanceConverter.toVOList(pageResult.getRecords()),
+            pageResult.getTotal(),
+            pageResult.getSize(),
+            pageResult.getCurrent()
+        );
     }
 }

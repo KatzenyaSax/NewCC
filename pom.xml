@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
     <name>dafuweng-parent</name>
 
+
     <modules>
         <module>dafuweng-common</module>
         <module>dafuweng-gateway</module>

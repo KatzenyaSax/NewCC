@@ -36,5 +36,7 @@ public interface FinanceProductConverter extends EntityConverter<FinanceProduct,
     @Mapping(target = "deleted", ignore = true)
     void copy(FinanceProductUpdateRequest request, @MappingTarget FinanceProduct entity);
 
+    FinanceProductVO toVO(FinanceProduct entity);
+
     List<FinanceProductVO> toVOList(List<FinanceProduct> entities);
 }

@@ -3,13 +3,15 @@ package com.dafuweng.sales.converter;
 import com.dafuweng.common.core.converter.EntityConverter;
 import com.dafuweng.sales.domain.dto.CustomerCreateRequest;
 import com.dafuweng.sales.domain.dto.CustomerUpdateRequest;
+import com.dafuweng.sales.domain.vo.CustomerPublicSeaVO;
 import com.dafuweng.sales.domain.vo.CustomerVO;
 import com.dafuweng.sales.entity.Customer;
 import com.dafuweng.sales.enums.CustomerStatus;
 import com.dafuweng.sales.enums.CustomerType;
 import com.dafuweng.sales.enums.IntentionLevel;
-import org.apache.ibatis.annotations.Mapper;
 import org.mapstruct.*;
+
+import java.util.List;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING,
         nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
@@ -62,4 +64,10 @@ public interface CustomerConverter extends EntityConverter<Customer, CustomerVO>
         CustomerStatus customerStatus = CustomerStatus.fromCode(status);
         return customerStatus != null ? customerStatus.getDesc() : null;
     }
+
+    CustomerVO toVO(Customer entity);
+
+    CustomerPublicSeaVO toPublicSeaVO(Customer entity);
+
+    List<CustomerVO> toVOList(List<Customer> entities);
 }

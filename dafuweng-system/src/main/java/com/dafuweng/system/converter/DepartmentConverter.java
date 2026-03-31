@@ -30,6 +30,8 @@ public interface DepartmentConverter extends EntityConverter<SysDepartment, Depa
     @Mapping(target = "updatedBy", ignore = true)
     SysDepartment toEntity(DepartmentUpdateRequest request);
 
+    void copy(DepartmentUpdateRequest request, @MappingTarget SysDepartment entity);
+
     DepartmentVO toVO(SysDepartment entity);
 
     DepartmentTreeVO toTreeVO(SysDepartment entity);

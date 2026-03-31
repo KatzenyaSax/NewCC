@@ -16,4 +16,6 @@ public interface WorkLogConverter extends EntityConverter<WorkLog, WorkLogVO> {
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "deleted", ignore = true)
     WorkLog toEntity(WorkLogSubmitRequest request);
+
+    WorkLogVO toVO(WorkLog entity);
 }

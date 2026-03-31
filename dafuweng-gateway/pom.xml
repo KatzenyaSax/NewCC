@@ -14,48 +14,35 @@
     <packaging>jar</packaging>
 
     <dependencies>
-        <!-- common-core -->
+        <!-- dafuweng-common: 包含 web/validation/mybatis/redisson/mysql/lombok/hutool/fastjson2/mapstruct -->
         <dependency>
             <groupId>com.dafuweng</groupId>
-            <artifactId>common-core</artifactId>
+            <artifactId>dafuweng-common</artifactId>
             <version>${project.version}</version>
         </dependency>
 
-        <!-- Spring Cloud Gateway -->
+        <!-- Spring Cloud Gateway (gateway 特有) -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
 
-        <!-- Nacos Discovery -->
+        <!-- Nacos Discovery (gateway 特有) -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
 
-        <!-- Nacos Config -->
+        <!-- Nacos Config (gateway 特有) -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
         </dependency>
 
-        <!-- Redis (for限流) -->
+        <!-- Redis Reactive (gateway 特有，区别于 common 的 redisson) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
-        </dependency>
-
-        <!-- Redisson -->
-        <dependency>
-            <groupId>org.redisson</groupId>
-            <artifactId>redisson-spring-boot-starter</artifactId>
-        </dependency>
-
-        <!-- Lombok -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <scope>provided</scope>
         </dependency>
     </dependencies>
 

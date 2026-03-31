@@ -40,6 +40,8 @@ public interface AccountConverter extends EntityConverter<SysAccount, AccountVO>
     @Mapping(target = "version", ignore = true)
     SysAccount toEntity(AccountUpdateRequest request);
 
+    void copy(AccountUpdateRequest request, @MappingTarget SysAccount entity);
+
     AccountVO toVO(SysAccount entity);
 
     List<AccountVO> toVOList(List<SysAccount> entities);

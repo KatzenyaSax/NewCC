@@ -12,5 +12,7 @@ import java.util.List;
         unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface BankConverter extends EntityConverter<Bank, BankVO> {
 
+    BankVO toVO(Bank entity);
+
     List<BankVO> toVOList(List<Bank> entities);
 }
