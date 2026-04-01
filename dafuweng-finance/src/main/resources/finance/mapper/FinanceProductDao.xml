@@ -12,8 +12,8 @@
         <result property="interestRate" column="interest_rate"/>
         <result property="minTerm" column="min_term"/>
         <result property="maxTerm" column="max_term"/>
-        <result property="requirements" column="requirements"/>
-        <result property="documents" column="documents"/>
+        <result property="requirements" column="requirements" typeHandler="com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler"/>
+        <result property="documents" column="documents" typeHandler="com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler"/>
         <result property="productFeatures" column="product_features"/>
         <result property="commissionRate" column="commission_rate"/>
         <result property="status" column="status"/>

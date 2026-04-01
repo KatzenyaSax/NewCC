@@ -20,7 +20,7 @@
         <result property="nextFollowUpDate" column="next_follow_up_date"/>
         <result property="publicSeaTime" column="public_sea_time"/>
         <result property="publicSeaReason" column="public_sea_reason"/>
-        <result property="annotation" column="annotation"/>
+        <result property="annotation" column="annotation" typeHandler="com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler"/>
         <result property="source" column="source"/>
         <result property="loanIntentionAmount" column="loan_intention_amount"/>
         <result property="loanIntentionProduct" column="loan_intention_product"/>

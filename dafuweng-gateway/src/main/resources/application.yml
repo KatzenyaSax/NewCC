@@ -1,0 +1,29 @@
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: auth-route
+          uri: lb://dafuweng-auth
+          predicates:
+            - Path=/auth/**
+        - id: system-route
+          uri: lb://dafuweng-system
+          predicates:
+            - Path=/system/**
+        - id: sales-route
+          uri: lb://dafuweng-sales
+          predicates:
+            - Path=/sales/**
+        - id: finance-route
+          uri: lb://dafuweng-finance
+          predicates:
+            - Path=/finance/**
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"

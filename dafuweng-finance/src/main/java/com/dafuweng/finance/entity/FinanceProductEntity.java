@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -35,11 +36,11 @@ public class FinanceProductEntity implements Serializable {
 
     private Integer maxTerm;
 
-    @TableField("requirements")
-    private String requirements;
+    @TableField(value = "requirements", typeHandler = JacksonTypeHandler.class)
+    private Object requirements;
 
-    @TableField("documents")
-    private String documents;
+    @TableField(value = "documents", typeHandler = JacksonTypeHandler.class)
+    private Object documents;
 
     private String productFeatures;
 

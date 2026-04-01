@@ -3,7 +3,6 @@
 
 <mapper namespace="com.dafuweng.auth.dao.SysPermissionDao">
 
-
     <resultMap id="sysPermissionMap" type="com.dafuweng.auth.entity.SysPermissionEntity">
         <result property="id" column="id"/>
         <result property="parentId" column="parent_id"/>
@@ -17,7 +16,14 @@
         <result property="createdAt" column="created_at"/>
         <result property="updatedAt" column="updated_at"/>
         <result property="deleted" column="deleted"/>
-
     </resultMap>
+
+    <!-- 根据角色ID查询权限码列表 -->
+    <select id="selectPermCodesByRoleId" resultType="java.lang.String">
+        SELECT p.perm_code
+        FROM sys_permission p
+        INNER JOIN sys_role_permission rp ON p.id = rp.permission_id
+        WHERE rp.role_id = #{roleId}
+    </select>
 
 </mapper>
