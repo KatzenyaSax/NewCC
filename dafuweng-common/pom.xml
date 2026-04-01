@@ -3,7 +3,6 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-<<<<<<< Updated upstream
     <parent>
         <groupId>com.katzenyasax</groupId>
         <artifactId>NewCC</artifactId>
@@ -18,7 +17,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-=======
 
     <groupId>com.dafuweng</groupId>
     <artifactId>dafuweng-common</artifactId>
@@ -156,8 +154,6 @@
             <scope>compile</scope>
         </dependency>
 
-
-
         <!-- sentinel依赖 -->
         <!-- https://mvnrepository.com/artifact/com.alibaba.cloud/spring-cloud-starter-alibaba-sentinel -->
         <dependency>
@@ -166,16 +162,9 @@
         </dependency>
 
 
-
-
-
-
-
     </dependencies>
 
     <dependencyManagement>
-
-
         <!-- 阿里的包管理 -->
         <dependencies>
             <dependency>
@@ -200,9 +189,6 @@
                 </configuration>
             </plugin>
         </plugins>
-
-
-
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -221,9 +207,6 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
-
-
     </build>
 
->>>>>>> Stashed changes
 </project>

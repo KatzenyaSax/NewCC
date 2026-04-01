@@ -16,7 +16,6 @@
         <module>dafuweng-system</module>
         <module>dafuweng-sales</module>
         <module>dafuweng-gateway</module>
-        <module>dafuweng-notify</module>
     </modules>
 
 </project>
