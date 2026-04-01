@@ -10,15 +10,13 @@
     <packaging>pom</packaging>
 
     <modules>
-
-
-        <module>dafuweng-gateway</module>
+        <module>dafuweng-common</module>
         <module>dafuweng-auth</module>
-        <module>dafuweng-sales</module>
         <module>dafuweng-finance</module>
         <module>dafuweng-system</module>
+        <module>dafuweng-sales</module>
+        <module>dafuweng-gateway</module>
         <module>dafuweng-notify</module>
-        <module>dafuweng-common</module>
     </modules>
 
 </project>
